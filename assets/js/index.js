@@ -2,9 +2,10 @@ import {Leon, Lobo, Oso, Serpiente, Aguila} from './class.js';
 
 const btnRegistrar = document.querySelector("#btnRegistrar");
 const selectAnimal = document.querySelector("#animal");
-const selectEdad = document.querySelector ("#edad")
-const inputComentario = document.querySelector("#comentarios")
-const previewImg = document.querySelector("#preview")
+const selectEdad = document.querySelector ("#edad");
+const inputComentario = document.querySelector("#comentarios");
+const previewImg = document.querySelector("#preview");
+const contenedorAnimales = document.querySelector("#Animales");
 
 
 
@@ -105,12 +106,38 @@ const instancia = async (nombre) =>{
         animal.setImg = imagen;
         animal.setComentario = inputComentario.value;
         animal.setSonido = sonido;
-        pintarHTML(animal)
+        pintarHTML(animal)  
     } catch (error) {
-        console.log(object);
+        console.log(error);
     }
 }
 
 const pintarHTML = (animal) =>  {
     console.log(animal);
+    const divCarta = document.createElement('div');
+    divCarta.classList.add("card", "w-25", "border-0", "mr-2");
+
+    const imgCarta = document.createElement('img');
+    imgCarta.classList.add("card-img-top");
+    imgCarta.src = `assets/imgs/${animal.getImg}`;
+    divCarta.appendChild(imgCarta);
+
+    const divContenidoCarta = document.createElement('div');
+    divContenidoCarta.classList.add("card-body", "p-0")
+
+    const btnSonido = document.createElement('button');
+    console.log(btnSonido);
+    btnSonido.classList.add("btn", "btn-secondary", "boton", "w-100", "border-0")
+    divContenidoCarta.appendChild(btnSonido);
+
+    const svgSonido = document.createElement('img');
+    svgSonido.classList.add('svg-sound')
+    svgSonido.src = "assets/imgs/audio.svg"
+    btnSonido.appendChild(svgSonido);
+
+    const sonido = document.createElement('audio');
+    svgSonido.appendChild(sonido)
+
+    contenedorAnimales.appendChild(divCarta)
+    divCarta.appendChild(divContenidoCarta)
 }

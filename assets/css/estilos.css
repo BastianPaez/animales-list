@@ -48,3 +48,11 @@ body {
     max-width: 85% !important;
 }
 
+.boton{
+  height: 3rem;
+  border-radius: 0;
+}
+
+.svg-sound{
+  width: 1.5rem;
+}
