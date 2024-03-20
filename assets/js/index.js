@@ -23,7 +23,7 @@ function previewImagenCambio(){
     }
     pintarImgPreview()
 }
-const pintarImgPreview = async ()=>{
+const pintarImgPreview = async () =>{
     const imagen = document.createElement('img')
     try {
         const animal = await data();
@@ -35,6 +35,8 @@ const pintarImgPreview = async ()=>{
     }
 }
 
+
+// Ingresar el animal
 function validacion(){
     selectAnimal.classList.remove('is-invalid');
     selectEdad.classList.remove('is-invalid');
@@ -52,15 +54,10 @@ function validacion(){
         registrarAnimal()
     }
 }
-function registrarAnimal(){
-    const animalData = data()
-    animalData.then((animal) => { 
-        console.log(animal);
-    }).catch((err) => {
-        console.log(err);
-    });
-}
 
+const registrarAnimal = () => {
+    instanciarAnimal();
+}
 
 const data = async () => {
     try {
@@ -78,38 +75,42 @@ const data = async () => {
     }
 }
 
-const instanciarAnimal = (animalData) =>{
-    switch(animalData.name){
+
+const instanciarAnimal = () =>{
+    switch(selectAnimal.value){
         case 'Leon':
-            instancia(animalData, Leon)
+            instancia(Leon)
             break;
         case 'Lobo':
-            instancia(animalData, Lobo)
+            instancia(Lobo)
             break;
         case 'Oso':
-            instancia(animalData, Oso)
+            instancia(Oso)
             break;
         case 'Serpiente':
-            instancia(animalData, Serpiente)
+            instancia(Serpiente)
             break;
         case 'Aguila':
-            instancia(animalData, Aguila)
+            instancia(Aguila)
             break;
     }
 }
 
-const instancia = (animalData, nombre)=>{
-    const {name, imagen, sonido} = animalData
-    const animal = new nombre();
-    animal.setNombre = name;
-    animal.setEdad = selectEdad.value;
-    animal.setImg = imagen;
-    animal.setComentario = inputComentario.value;
-    animal.setSonido = sonido;
-    pintarHTML(animal)
+const instancia = async (nombre) =>{
+    try {
+        const {name, imagen, sonido} = await data();
+        const animal = new nombre();
+        animal.setNombre = name;
+        animal.setEdad = selectEdad.value;
+        animal.setImg = imagen;
+        animal.setComentario = inputComentario.value;
+        animal.setSonido = sonido;
+        pintarHTML(animal)
+    } catch (error) {
+        console.log(object);
+    }
 }
 
 const pintarHTML = (animal) =>  {
-    
-    
+    console.log(animal);
 }
