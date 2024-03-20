@@ -46,8 +46,9 @@ export class Leon extends Animal {
         super(nombre, edad, img, comentarios, sonido)
     }
 
-    Rugir(){
-        console.log('Emite un sonido de animal');
+    static Rugir(audio){
+        audio.src = "assets/sounds/Rugido.mp3"
+        audio.setAttribute("autoplay", "")
     }
 }
 export class Lobo extends Animal {
@@ -55,8 +56,9 @@ export class Lobo extends Animal {
         super(nombre, edad, img, comentarios, sonido)
     }
 
-    Aullar(){
-        console.log('Emite un sonido de animal');
+    static Aullar(audio){
+        audio.src = "assets/sounds/Aullido.mp3"
+        audio.setAttribute("autoplay", "")
     }
 }
 export class Oso extends Animal {
@@ -64,8 +66,9 @@ export class Oso extends Animal {
         super(nombre, edad, img, comentarios, sonido)
     }
 
-    Gruñir(){
-        console.log('Emite un sonido de animal');
+    static Gruñir(audio){
+        audio.src = "assets/sounds/Gru単ido.mp3"
+        audio.setAttribute("autoplay", "")
     }
 }
 export class Serpiente extends Animal {
@@ -73,8 +76,9 @@ export class Serpiente extends Animal {
         super(nombre, edad, img, comentarios, sonido)
     }
 
-    Sisear(){
-        console.log('Emite un sonido de animal');
+    static Sisear(audio){
+        audio.src = "assets/sounds/Siseo.mp3"
+        audio.setAttribute("autoplay", "")
     }
 }
 export class Aguila extends Animal {
@@ -82,7 +86,8 @@ export class Aguila extends Animal {
         super(nombre, edad, img, comentarios, sonido)
     }
 
-    Chillar(){
-        console.log('Emite un sonido de animal');
+    static Chillar(audio){
+        audio.src = "assets/sounds/Chillido.mp3"
+        audio.setAttribute("autoplay", "")
     }
 }

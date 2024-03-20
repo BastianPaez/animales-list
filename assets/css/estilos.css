@@ -8,7 +8,7 @@ body {
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100%;
   padding: 100px;
 }
 
@@ -16,6 +16,7 @@ body {
 
 #preview {
   height: 200px;
+  
   background-image: url(../imgs/lion.svg);
   background-position: top;
   background-size: contain;
@@ -48,9 +49,18 @@ body {
     max-width: 85% !important;
 }
 
+.img-carta {  
+  height: 10rem;
+}
+
 .boton{
   height: 3rem;
   border-radius: 0;
+  background-image: url(../imgs/audio.svg);
+  background-position: center;
+  background-size: 2rem;
+  background-repeat: no-repeat;
+
 }
 
 .svg-sound{
