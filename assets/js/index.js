@@ -7,6 +7,7 @@ const inputComentario = document.querySelector("#comentarios");
 const previewImg = document.querySelector("#preview");
 const contenedorAnimales = document.querySelector("#Animales");
 
+
 const animales = [];
 const animalesInstanciados = [];
 
@@ -88,7 +89,15 @@ function validacion() {
     if (selectAnimal.value != "" && selectEdad.value != "" && inputComentario.value != "") {
         instanciarAnimal()
         pintarHTML()
+        limpiarCampos()
     }
+}
+
+const limpiarCampos = () =>{
+    selectAnimal.selectedIndex = 0;
+    selectEdad.selectedIndex = 0;
+    inputComentario.value = "";
+    removeHTML(previewImg);
 }
 
 const instanciarAnimal = () => {
@@ -128,6 +137,9 @@ const pintarHTML = () => {
     animalesInstanciados.forEach((animal, index) => {
         const divCarta = document.createElement('div');
         divCarta.setAttribute('data-id', index);
+        divCarta.setAttribute("type", "button");
+        divCarta.setAttribute("data-toggle","modal");
+        divCarta.setAttribute("data-target", "#modal");
         divCarta.classList.add("card", "w-25", "border-0", "mr-2", `${selectAnimal.value}`);
 
         const imgCarta = document.createElement('img');
@@ -156,17 +168,44 @@ const removeHTML = (selector) => {
 //mostrarModal
 function mostrarModal(e){
     if (e.target.classList.contains('img-carta')){
-        const idElemento = e.target.parentElement.getAttribute("data-id")
-        const animalInfo = animalesInstanciados[idElemento]
+        const body = document.querySelector('body')
+        removeModal(document.querySelector(".modal".parentElement))
+        const idElemento = e.target.parentElement.getAttribute("data-id");
+        const animalInfo = animalesInstanciados[idElemento];
         console.log(animalInfo);
+        const divModal = document.createElement('div');
+        divModal.innerHTML = `
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content bg-dark text-light text-center">
+                        <div class="modal-header d-block">
+                            <img src="assets/imgs/${animalInfo.getImg}" alt="${animalInfo.getNombre}" class="w-25">
+                            <h4 class="modal-title" id="ModalLabel">${animalInfo.getEdad}</h4>
+                            <h5 class="modal-title">Comentarios</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>${animalInfo.getComentario}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+      body.appendChild(divModal)
+    }
+}
+
+const removeModal = () => {
+    while (document.querySelector('.modal')) {
+        document.querySelector('.modal').parentElement.remove()
     }
 }
 
 
-
-
 // aplicar sonido
 function iniciarSonido(e) {
+    e.preventDefault();
     if (e.target.classList.contains('btn')) {
         const contenedor = e.target.parentElement.parentElement;
         const audio = document.querySelector("#player")

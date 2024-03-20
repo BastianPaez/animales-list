@@ -21,6 +21,9 @@ class Animal {
     get getImg(){
         return this.#img;
     }
+    get getComentario(){
+        return this.#comentarios;
+    }
     get getSonido(){
         return this.#sonido;
     }
