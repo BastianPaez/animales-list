@@ -129,7 +129,6 @@ const removeHTML = (selector) => {
 export function mostrarModal(e){
     e.preventDefault()
     if (e.target.classList.contains('img-carta')){
-        console.log(e.target.classList);
         const body = document.querySelector('body')
         removeModal(document.querySelector(".modal".parentElement))
         const idElemento = e.target.parentElement.getAttribute("data-id");
@@ -168,7 +167,6 @@ export function iniciarSonido(e) {
 
     if (e.target.classList.contains('btn')) {
         const contenedor = e.target.parentElement.parentElement;
-        console.log(contenedor.classList);
         const audio = document.querySelector("#player")
         if (contenedor.classList.contains('Leon')) {
             Leon.Rugir(audio)
